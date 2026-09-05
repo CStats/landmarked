@@ -1,0 +1,35 @@
+Package: landmarked
+Type: Package
+Title: Plot Adjusted Kaplan-Meier Estimates from a Landmark Time
+Version: 0.1.0
+Authors@R: c(
+    person(
+      "Chris", "Brown",
+      email = "c.brown@sydney.edu.au",
+      role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0003-2506-4871")
+    )
+  )
+Description: Plots contextual landmark Kaplan-Meier curves. 
+    This extension of the `survminer::ggsurvplot()` function
+    allows the specification of a landmark time and an optional
+    label. The period before the landmark is displayed as a
+    pooled survival curve, while curves beyond the landmark are
+    presented according to the groups defined in the supplied
+    survfit object.
+License: GPL (>= 3) + file LICENSE
+Encoding: UTF-8
+URL: https://github.com/CStats/landmarked
+LazyData: true
+Imports: 
+    dplyr,
+    ggplot2,
+    survival,
+    survminer
+RoxygenNote: 7.3.3
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr

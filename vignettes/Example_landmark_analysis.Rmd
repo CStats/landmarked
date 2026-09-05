@@ -1,0 +1,87 @@
+---
+title: "Example landmark analysis"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Example_landmark_analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This package provides a function `ggsurvplotlm` to create landmark survival plots using the `ggsurvplot` function from the `survminer` package. The function takes a `survfit` object, a landmark time, and an optional label for the landmark time as inputs and returns a modified `ggsurvplot` object.
+
+```{r setup}
+library(landmarked)
+library(survminer)
+library(dplyr)
+```
+
+Using the `lung` dataset from the `survival` package, we visualise the survival curves for male and female patients. This example is one in which a landmark analysis is not necessary. Sex is known at time 0 and hence it is reasonable to create separate curves by this variable from this time.
+
+A landmark analysis addresses the problem of *survivor bias* in scenarios where the variable of interest is not known at baseline, for example, treatment response. In such cases, splitting curves from time=0 as though group membership were known in advance introduces bias. Splitting curves according to status at a specified *landmark* time point provides an unbiased comparison.
+
+After converting days to months, we can plot the Kaplan-Meier estimates using `ggsurvplot` with our desired formatting.
+
+```{r}
+data = survival::lung |> 
+  mutate(months = time/30.4375) |> 
+  select(months,status, sex)
+
+fit = survival::survfit(survival::Surv(months, status) ~ sex, data)
+
+ggsurvplot(
+  fit,    
+  data = data, 
+  ylab="survival (%)",
+  xlab="Time (months)",
+  break.time.by = 6,
+  conf.int = FALSE,
+  legend = "none",
+  surv.scale = "percent",
+  xlim= c(0,25),
+  surv.median.line = "hv",
+  palette = c("#2E9FDF","#E7B800"),
+  #Standard configuration
+  risk.table = c("nrisk_cumcensor"),
+  ggtheme = theme_survminer()+theme(),
+  tables.theme = theme_void() + theme(plot.title = element_text(size =10)),
+  risk.table.y.text.col = T, 
+  risk.table.y.text = FALSE, 
+  axes.offset=FALSE,
+  risk.table.fontsize =3,
+  tables.height=0.2
+)
+
+```
+
+The `ggsurvplotlm` function can be used to create a landmark survival plot. The pooled Kaplan-Meier estimate is calculated prior to the landmark time and used to adjust the remaining estimates so that survival probabilities beyond the landmark can be interpreted relative to the baseline time point.
+
+In this example, we set the landmark time to 6 months and label it "Landmark". The function adjusts the Kaplan-Meier estimates accordingly. As with `ggsurvplot`, you can pass additional plotting parameters to `ggsurvplotlm`, allowing the plot to be formatted as needed.
+
+
+```{r}
+ggsurvplotlm(
+  fit,                     
+  landmark_time = 6,
+  landmark_label = "Landmark",
+  data = data,  
+  ylab="survival (%)",
+  xlab="Time (months)",
+  break.time.by = 6,
+  conf.int = FALSE,
+  legend = "none",
+  surv.scale = "percent",
+  xlim= c(0,25),
+  surv.median.line = "hv",
+  palette = c("#2E9FDF","#E7B800"),
+  ggtheme = theme_survminer()+theme(),
+  axes.offset=FALSE
+)
+```
+
