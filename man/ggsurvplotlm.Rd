@@ -21,3 +21,7 @@ The modified ggsurvplot object.
 \description{
 Plot and adjusted Kaplan-Meier curve accounting for landmark analysis
 }
+\examples{
+fit = survival::survfit(survival::Surv(time, status) ~ sex, data = survival::lung)
+ggsurvplotlm(fit, landmark_time = 42, landmark_label = "Landmark Time",)
+}

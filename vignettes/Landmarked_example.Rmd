@@ -1,8 +1,8 @@
 ---
-title: "Example landmark analysis"
+title: "Landmarked example"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Example_landmark_analysis}
+  %\VignetteIndexEntry{Landmarked_example}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -28,7 +28,7 @@ A landmark analysis addresses the problem of *survivor bias* in scenarios where 
 
 After converting days to months, we can plot the Kaplan-Meier estimates using `ggsurvplot` with our desired formatting.
 
-```{r}
+```{r, fig.width=6, fig.height=4}
 data = survival::lung |> 
   mutate(months = time/30.4375) |> 
   select(months,status, sex)
@@ -65,7 +65,7 @@ The `ggsurvplotlm` function can be used to create a landmark survival plot. The 
 In this example, we set the landmark time to 6 months and label it "Landmark". The function adjusts the Kaplan-Meier estimates accordingly. As with `ggsurvplot`, you can pass additional plotting parameters to `ggsurvplotlm`, allowing the plot to be formatted as needed.
 
 
-```{r}
+```{r, fig.width=6, fig.height=4}
 ggsurvplotlm(
   fit,                     
   landmark_time = 6,

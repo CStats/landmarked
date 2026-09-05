@@ -4,6 +4,9 @@
 #' @return The data.frame with variables time, status, and strata (if applicable).
 #' @export
 #'
+#' @examples
+#' fit = survival::survfit(survival::Surv(time, status) ~ sex, data = survival::lung)
+#' dataset_from_survfit(fit)
 dataset_from_survfit <- function(fit){
 
   # Check fit is of class survfit
