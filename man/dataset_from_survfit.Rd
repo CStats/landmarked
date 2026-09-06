@@ -15,3 +15,7 @@ The data.frame with variables time, status, and strata (if applicable).
 \description{
 Recreate a dataset from a survfit object
 }
+\examples{
+fit = survival::survfit(survival::Surv(time, status) ~ sex, data = survival::lung)
+dataset_from_survfit(fit)
+}
