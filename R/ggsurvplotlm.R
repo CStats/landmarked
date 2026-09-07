@@ -15,6 +15,9 @@ ggsurvplotlm <- function(fit,
                          landmark_label = "Landmark Time",
                          ...){
 
+  #define variables to avoid R CMD check notes
+  time = status = strata = strata2 = NULL
+
   # reconstruct dataset from fit
   reconstructed_data <- dataset_from_survfit(fit) |>
     dplyr::arrange(strata,time) |>
