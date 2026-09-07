@@ -8,6 +8,12 @@ The goal of landmarked is to plot survival curves for time-to-event data adjuste
 
 ## Installation
 
+You can install the landmarked from [CRAN](https://cran.r-project.org/) with:
+
+``` r
+install.packages("landmarked")
+```
+
 You can install the development version of landmarked from [GitHub](https://github.com/) with:
 
 ``` r
