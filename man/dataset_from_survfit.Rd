@@ -10,7 +10,7 @@ dataset_from_survfit(fit)
 \item{fit}{A survfit object from the 'survival' package.}
 }
 \value{
-The data.frame with variables time, status, and strata (if applicable).
+The data.frame with variables: time, status, and strata (if applicable).
 }
 \description{
 Recreate a dataset from a survfit object

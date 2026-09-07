@@ -1,7 +1,7 @@
 #' Recreate a dataset from a survfit object
 #'
 #' @param fit A survfit object from the 'survival' package.
-#' @return The data.frame with variables time, status, and strata (if applicable).
+#' @return The data.frame with variables: time, status, and strata (if applicable).
 #' @export
 #'
 #' @examples

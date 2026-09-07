@@ -6,17 +6,17 @@ Authors@R: c(
     person(
       "Chris", "Brown",
       email = "c.brown@sydney.edu.au",
-      role = c("aut", "cre"),
+      role = c("aut", "cre","cph"),
       comment = c(ORCID = "0000-0003-2506-4871")
     )
   )
 Description: Plots contextual landmark Kaplan-Meier curves. 
-    This extension of the `survminer::ggsurvplot()` function
-    allows the specification of a landmark time and an optional
+    An extension of the `survminer::ggsurvplot()` function
+    that allows the specification of a landmark time and an optional
     label. The period before the landmark is displayed as a
     pooled survival curve, while curves beyond the landmark are
     presented according to the groups defined in the supplied
-    survfit object.
+    `survival::survfit` object.
 License: GPL (>= 3)
 Encoding: UTF-8
 URL: https://github.com/CStats/landmarked
@@ -33,4 +33,3 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 VignetteBuilder: knitr
-BugReports: https://github.com/CStats/landmarked/issues

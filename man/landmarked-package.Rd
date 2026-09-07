@@ -6,7 +6,7 @@
 \alias{landmarked-package}
 \title{landmarked: Plot Adjusted Kaplan-Meier Estimates from a Landmark Time}
 \description{
-Plots contextual landmark Kaplan-Meier curves. This extension of the `survminer::ggsurvplot()` function allows the specification of a landmark time and an optional label. The period before the landmark is displayed as a pooled survival curve, while curves beyond the landmark are presented according to the groups defined in the supplied survfit object.
+Plots contextual landmark Kaplan-Meier curves. An extension of the `survminer::ggsurvplot()` function that allows the specification of a landmark time and an optional label. The period before the landmark is displayed as a pooled survival curve, while curves beyond the landmark are presented according to the groups defined in the supplied `survival::survfit` object.
 }
 \seealso{
 Useful links:
@@ -16,7 +16,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Chris Brown \email{c.brown@sydney.edu.au} (\href{https://orcid.org/0000-0003-2506-4871}{ORCID})
+\strong{Maintainer}: Chris Brown \email{c.brown@sydney.edu.au} (\href{https://orcid.org/0000-0003-2506-4871}{ORCID}) [copyright holder]
 
 }
 \keyword{internal}
