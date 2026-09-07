@@ -9,7 +9,7 @@
 #'
 #' @examples
 #' fit = survival::survfit(survival::Surv(time, status) ~ sex, data = survival::lung)
-#' ggsurvplotlm(fit, landmark_time = 42, landmark_label = "Landmark Time")
+#' ggsurvplotlm(fit, landmark_time = 70, landmark_label = "Landmark Time",axes.offset=FALSE)
 ggsurvplotlm <- function(fit,
                          landmark_time=6,
                          landmark_label = "Landmark Time",
